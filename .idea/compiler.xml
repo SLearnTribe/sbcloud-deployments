@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="learntribe-omnibus" />
+        <module name="learntribe-api" />
+        <module name="com.edw" />
+        <module name="learntribe-inquisitve" />
+        <module name="learntribe-builder" />
+        <module name="cloud-gateway" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud-eureka-discovery" target="11" />
+      <module name="cloud-gateway" target="11" />
+      <module name="com.edw" target="11" />
+      <module name="learntribe-api" target="1.8" />
+      <module name="learntribe-builder" target="1.8" />
+      <module name="learntribe-inquisitve" target="1.8" />
+      <module name="learntribe-model" target="1.8" />
+      <module name="learntribe-omnibus" target="11" />
+      <module name="microservice-1" target="16" />
+      <module name="microservice-2" target="16" />
+      <module name="oauth2-authorization-code-demo" target="16" />
+      <module name="oauth2-client-credentials-demo" target="16" />
+      <module name="oauth2-pkce-demo" target="16" />
+      <module name="spring-security-oauth2-keycloak" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cloud-eureka-discovery" options="-parameters" />
+      <module name="cloud-gateway" options="-parameters" />
+      <module name="com.edw" options="-parameters" />
+      <module name="microservice-1" options="-parameters" />
+      <module name="microservice-2" options="-parameters" />
+      <module name="oauth2-authorization-code-demo" options="-parameters" />
+      <module name="oauth2-pkce-demo" options="-parameters" />
+    </option>
+  </component>
+</project>

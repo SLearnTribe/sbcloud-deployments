@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../learntribe-inquisitve" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../learntribe-model" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../learntribe-omnibus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../oauth 2/java-keycloak-integration" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../spring-security-oauth2-keycloak-demo" vcs="Git" />
+  </component>
+</project>

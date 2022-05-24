@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cloud-gateway/cloud-gateway.iml" filepath="$PROJECT_DIR$/../cloud-gateway/cloud-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../oauth 2/java-keycloak-integration/com.edw.iml" filepath="$PROJECT_DIR$/../oauth 2/java-keycloak-integration/com.edw.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../learntribe-model/learntribe-api/learntribe-api.iml" filepath="$PROJECT_DIR$/../learntribe-model/learntribe-api/learntribe-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../learntribe-model/learntribe-builder/learntribe-builder.iml" filepath="$PROJECT_DIR$/../learntribe-model/learntribe-builder/learntribe-builder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../learntribe-inquisitve/learntribe-inquisitve.iml" filepath="$PROJECT_DIR$/../learntribe-inquisitve/learntribe-inquisitve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../learntribe-model/learntribe-model.iml" filepath="$PROJECT_DIR$/../learntribe-model/learntribe-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../learntribe-omnibus/learntribe-omnibus.iml" filepath="$PROJECT_DIR$/../learntribe-omnibus/learntribe-omnibus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sbcloud-deployments.iml" filepath="$PROJECT_DIR$/.idea/sbcloud-deployments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spring-security-oauth2-keycloak-demo/spring-security-oauth2-keycloak.iml" filepath="$PROJECT_DIR$/../spring-security-oauth2-keycloak-demo/spring-security-oauth2-keycloak.iml" />
+    </modules>
+  </component>
+</project>
