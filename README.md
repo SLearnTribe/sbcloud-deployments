@@ -6,8 +6,8 @@
 
 - Open git bash & `git clone https://github.com/SLearnTribe/sbcloud-deployments`
 - Change dir to `cd sbcloud-deployments/sbdev22`.
-- Run `docker-compose -f sbdev22.yml up -d`
-- Validate to see if all the containers are up and running `docker container ps`
+- Run `docker-compose -f sbdev22.yml up -d`.
+- Validate to see if all the containers are up and running `docker container ps`.
 - Navigate to http://localhost:5050 for Pgadmin.
 ```
 Add Server with the below details
