@@ -6,6 +6,19 @@ volumes:
   pgadmin:
 
 services:
+  eureka-discovery:
+      container_name: eureka-discovery
+      image: smilebat96/cloud-eureka-discovery:latest
+      ports:
+        - 8761:8761
+      networks:
+        - postgres
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 4s
+          max_attempts: 5
+          window: 60s
   postgres:
       image: postgres
       volumes:
