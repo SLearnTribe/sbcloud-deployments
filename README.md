@@ -19,4 +19,4 @@ Add Server with the below details
 # password : password
 ```
 - Navigate to http://localhost:8085 for Keycloak
-- Use `docker logs 'container-id' -f` to follow the logs of a container
+- Use `docker logs 'container-id' -f` to follow the logs of a container.
