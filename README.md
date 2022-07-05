@@ -1,6 +1,6 @@
 # Pre-Requisite
 
-- Install latest version of [Docker](https://docs.docker.com/desktop/windows/install/)
+- Install latest version of [Docker](https://docs.docker.com/desktop/windows/install/).
 
 ## Steps to Deploy in Local
 
