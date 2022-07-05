@@ -12,7 +12,7 @@
 ```
 Add Server with the below details
 # name : postgres
-# hostname/ip : localhost
+# hostname/ip : localhost (validate)
 # port : 5432
 # maintenance database : keycloak
 # username : keycloak
