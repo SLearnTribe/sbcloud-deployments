@@ -6,42 +6,33 @@ volumes:
   pgadmin:
 
 services:
-  eureka-discovery:
-      container_name: eureka-discovery
-      image: smilebat96/cloud-eureka-discovery:latest
-      ports:
-        - 8761:8761
-      networks:
-        - postgres
-      deploy:
-        restart_policy:
-          condition: on-failure
-          delay: 4s
-          max_attempts: 5
-          window: 60s
   postgres:
-      image: postgres
-      volumes:
-        - postgres_data:/var/lib/postgresql/data
+      image: docker.io/bitnami/postgresql:latest
       environment:
-        POSTGRES_DB: keycloak
-        POSTGRES_USER: keycloak
-        POSTGRES_PASSWORD: password
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_USERNAME=keycloak
+      - POSTGRESQL_DATABASE=keycloak
+      - POSTGRES_PASSWORD=password
+      volumes:
+        - 'postgres_data:/var/lib/postgresql/data'
       ports:
         - 5432:5432
       networks:
         - postgres
   keycloak:
-      image: quay.io/keycloak/keycloak:legacy
+      image: bitnami/keycloak
       environment:
         DB_VENDOR: POSTGRES
         DB_ADDR: postgres
-        DB_DATABASE: keycloak
-        DB_USER: keycloak
-        DB_SCHEMA: public
-        DB_PASSWORD: password
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: password
+        KEYCLOAK_DATABASE_HOST: postgres
+        KEYCLOAK_DATABASE_PORT: 5432
+        KEYCLOAK_DATABASE_NAME: keycloak
+        KEYCLOAK_DATABASE_USER: keycloak
+        KEYCLOAK_DATABASE_SCHEMA: public
+        KEYCLOAK_DATABASE_PASSWORD: password
+        KEYCLOAK_CREATE_ADMIN_USER: admin
+        KEYCLOAK_ADMIN_USER: admin
+        KEYCLOAK_ADMIN_PASSWORD: password
         # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
         #JDBC_PARAMS: "ssl=true"
       ports:
