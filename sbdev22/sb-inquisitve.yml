@@ -3,21 +3,20 @@ version: '3'
 services:
   learntribe-inquisitve:
       container_name: learntribe-inquisitve
-      image: smilebat96/learntribe-inquisitve:latest
+      image: la-7
       ports:
         - 8089:8089
+      networks:
+        - sbdev22_postgres
       deploy:
         restart_policy:
           condition: on-failure
           delay: 10s
           max_attempts: 5
-          window: 120s
-      depends_on:
-        - keycloak
-        - postgres
-        - eureka-discovery
-      networks:
-        - sbdev22_postgres
+          window: 60s
+      environment:
+        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
+        FEIGN_CLIENT_URL_KEYCLOAK: http://host.docker.internal:8085
 networks:
   sbdev22_postgres:
     external: true
