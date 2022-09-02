@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  flask-proctor:
+      container_name: flask-proctor
+      image: docker.io/tf153/flask-docker:latest
+      ports:
+        - 5000:5000
+      deploy:
+        restart_policy:
+          condition: on-failure
+          delay: 10s
+          max_attempts: 5
+          window: 60s
