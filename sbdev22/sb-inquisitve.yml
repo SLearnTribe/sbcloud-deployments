@@ -3,7 +3,7 @@ version: '3'
 services:
   learntribe-inquisitve:
       container_name: learntribe-inquisitve
-      image: smilebat96/learntribe-inquisitve:1.0.2
+      image: smilebat96/learntribe-inquisitve:1.0.3
       ports:
         - 8089:8089
       networks:
