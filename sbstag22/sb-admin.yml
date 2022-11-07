@@ -31,10 +31,11 @@ services:
         KEYCLOAK_DATABASE_USER: keycloak
         KEYCLOAK_DATABASE_SCHEMA: public
         KEYCLOAK_DATABASE_PASSWORD: password
-        KEYCLOAK_CREATE_ADMIN_USER: admin
+        KEYCLOAK_CREATE_ADMIN_USER: true
         KEYCLOAK_ADMIN_USER: admin
         KEYCLOAK_ADMIN_PASSWORD: password
         KEYCLOAK_LOGLEVEL: INFO
+        KEYCLOAK_ENABLE_HTTPS: false
       ports:
         - 8085:8080
       volumes:
