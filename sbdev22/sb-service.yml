@@ -16,7 +16,7 @@ services:
         - sbdev22_postgres
   cloud-gateway:
       container_name: cloud-gateway
-      image: smilebat96/cloud-gateway:latest
+      image: token-gt
       ports:
         - 8080:8080
       deploy:

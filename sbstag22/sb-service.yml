@@ -16,7 +16,7 @@ services:
         - sbdev22_postgres
   cloud-gateway:
       container_name: cloud-gateway
-      image: test-9
+      image: smilebat96/cloud-gateway:latest
       ports:
         - 8080:8080
       deploy:
@@ -31,8 +31,8 @@ services:
         - sbdev22_postgres
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        KEYCLOAK_RESTURL: http://host.docker.internal:8085/realms
-        KEYCLOAK_BASEURL: http://host.docker.internal:8085/realms
+        KEYCLOAK_RESTURL: http://keycloak:8080/realms
+        KEYCLOAK_BASEURL: http://keycloak:8080/realms
 networks:
   sbdev22_postgres:
     external: true
