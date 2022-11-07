@@ -13,7 +13,7 @@ services:
           max_attempts: 5
           window: 60s
       networks:
-        - sbdev22_postgres
+        - sbstag_postgres
   cloud-gateway:
       container_name: cloud-gateway
       image: smilebat96/cloud-gateway:latest
@@ -28,11 +28,11 @@ services:
       depends_on:
         - eureka-discovery
       networks:
-        - sbdev22_postgres
+        - sbstag_postgres
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        KEYCLOAK_RESTURL: http://keycloak:8080/realms
-        KEYCLOAK_BASEURL: http://keycloak:8080/realms
+        KEYCLOAK_RESTURL: http://keycloak:8080/auth/realms
+        KEYCLOAK_BASEURL: http://38.242.132.44:8085/auth/realms
 networks:
-  sbdev22_postgres:
+  sbstag_postgres:
     external: true

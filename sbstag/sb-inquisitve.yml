@@ -16,7 +16,7 @@ services:
           window: 60s
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        FEIGN_CLIENT_URL_KEYCLOAK: http://keycloak:8080
+        FEIGN_CLIENT_URL_KEYCLOAK: http://keycloak:8080/auth
 networks:
   sbdev22_postgres:
     external: true
