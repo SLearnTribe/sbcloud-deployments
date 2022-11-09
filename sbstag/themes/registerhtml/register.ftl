@@ -50,8 +50,8 @@
 						class="${properties.kcInputClass!}"
 						name="user.attributes.role"
 						value="${(register.formData['user.attributes.role']!'')}">
-							<option value="group1" selected>CANDIDATE</option>
-							<option value="group2">HR</option>
+							<option value="CANDIDATE" selected>Candidate</option>
+							<option value="HR">Recruiter</option>
 					</select>
 				</div>
 			</div>
