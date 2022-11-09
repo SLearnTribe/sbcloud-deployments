@@ -35,7 +35,7 @@ services:
         - 8085:8080
       volumes:
         - ./themes/mock:/opt/bitnami/keycloak/themes/mock
-        - ./themes/registerhtml:/opt/jboss/keycloak/themes/base/login
+        - ./themes/registerhtml/register.ftl:/opt/jboss/keycloak/themes/base/login/register.ftl
       depends_on:
         - postgres
       networks:
