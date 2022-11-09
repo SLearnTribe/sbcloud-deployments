@@ -170,9 +170,6 @@ h1#kc-page-title {
     margin-top: 10px;
 }
 
-#kc-page-title::after {
-	content: "Smile .Bat"
-}
 
 #kc-locale ul {
     background-color: #FFF;
@@ -229,6 +226,10 @@ div.kc-logo-text {
 
 div.kc-logo-text span {
     display: none;
+}
+
+div.kc-logo-text::after {
+    content: "Smile .Bat";
 }
 
 #kc-header {
