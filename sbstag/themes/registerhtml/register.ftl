@@ -39,39 +39,22 @@
                     </#if>
                 </div>
             </div>
-			
-			<div class="${properties.kcFormGroupClass!}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.role" class="${properties.kcLabelClass!}">Role</label>
-                </div>
-                <div class="${properties.kcInputWrapperClass!}">
-                    <input type="radio" id="user.attributes.role" class="${properties.kcInputClass!}" name="user.attributes.role"
-                           value="${(register.formData['user.attributes.role']!'')}"
-                    />
-
-                    <#if messagesPerField.existsError('lastName')>
-                        <span id="input-error-lastname" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
-                            ${kcSanitize(messagesPerField.get('lastName'))?no_esc}
-                        </span>
-                    </#if>
-                </div>
-            </div>
-			
-			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('group',properties.kcFormGroupErrorClass!)}">
-    <div class="${properties.kcLabelWrapperClass!}">
-        <label for="group" class="${properties.kcLabelClass!}">${msg("group")}</label>
-    </div>
-    <div class="${properties.kcInputWrapperClass!}">
-        <select
-            id="user.attributes.group"
-            class="${properties.kcInputClass!}"
-            name="user.attributes.group"
-            value="${(register.formData['user.attributes.group']!'')}">
-                <option value="group1" selected>Group 1</option>
-                <option value="group2">Group 2</option>
-        </select>
-    </div>
-</div>
+						
+			<div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('role',properties.kcFormGroupErrorClass!)}">
+				<div class="${properties.kcLabelWrapperClass!}">
+					<label for="role" class="${properties.kcLabelClass!}">${msg("Role")}</label>
+				</div>
+				<div class="${properties.kcInputWrapperClass!}">
+					<select
+						id="user.attributes.role"
+						class="${properties.kcInputClass!}"
+						name="user.attributes.role"
+						value="${(register.formData['user.attributes.role']!'')}">
+							<option value="group1" selected>CANDIDATE</option>
+							<option value="group2">HR</option>
+					</select>
+				</div>
+			</div>
 
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcLabelWrapperClass!}">
