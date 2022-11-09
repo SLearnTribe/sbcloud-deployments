@@ -32,7 +32,7 @@ services:
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
         KEYCLOAK_RESTURL: http://keycloak:8080/auth/realms
-        KEYCLOAK_BASEURL: http://www.smilebat.xyz/auth
+        KEYCLOAK_BASEURL: http://www.smilebat.xyz/auth/realms
 networks:
   sbstag_postgres:
     external: true
