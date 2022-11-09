@@ -36,6 +36,7 @@ services:
       volumes:
         - ./themes/registerhtml/register.ftl:/opt/jboss/keycloak/themes/base/login/register.ftl
         - ./themes/registerhtml/login.css:/opt/jboss/keycloak/themes/keycloak/login/resources/css/login.css
+        - ./themes/registerhtml/smilebat.png:/opt/jboss/keycloak/themes/keycloak/login/resources/img/smilebat.png
       depends_on:
         - postgres
       networks:

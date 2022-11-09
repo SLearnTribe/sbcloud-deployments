@@ -217,12 +217,11 @@ a#kc-current-locale-link::after {
 }
 
 div.kc-logo-text {
-    background-image: url(../img/keycloak-logo-text.png);
+    background-image: url(../img/smilebat.png);
     background-repeat: no-repeat;
     height: 63px;
     width: 300px;
     margin: 0 auto;
-	display: none
 }
 
 div.kc-logo-text span {
@@ -230,7 +229,7 @@ div.kc-logo-text span {
 }
 
 div.kc-logo-text::after {
-    content: "Smile .Bat";
+    /*content: "Smile .Bat";*/
 }
 
 #kc-header {
