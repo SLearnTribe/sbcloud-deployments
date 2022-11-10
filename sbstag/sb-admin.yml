@@ -31,6 +31,7 @@ services:
         DB_PASSWORD: password
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: password
+        KEYCLOAK_HOSTNAME: www.smilebat.xyz
       ports:
         - 8085:8080
       volumes:
