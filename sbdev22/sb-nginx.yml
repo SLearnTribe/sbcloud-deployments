@@ -3,16 +3,15 @@ version: '3'
 services:
   nginx:
     container_name: nginx
-    image: nginx:latest
+    image: nginx-gw
     restart: unless-stopped
     ports:
       - 80:80
-      - 443:443
       - 8080:8080
     networks:
-      - sbstag_postgres
+      - sbdev22_postgres
     volumes:
-      - ./nginx/dnginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
 networks:
-  sbstag_postgres:
+  sbdev22_postgres:
     external: true

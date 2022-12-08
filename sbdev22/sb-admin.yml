@@ -55,7 +55,7 @@ services:
       restart: always
   pgadmin:
     container_name: pgadmin
-    image: dpage/pgadmin4:5.5
+    image: dpage/pgadmin4:latest
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
