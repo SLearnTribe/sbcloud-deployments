@@ -21,38 +21,31 @@ services:
         - postgres
       restart: always
   keycloak:
-      image: bitnami/keycloak
-      environment:
-        DB_VENDOR: POSTGRES
-        DB_ADDR: postgres
-        KEYCLOAK_DATABASE_HOST: postgres
-        KEYCLOAK_DATABASE_PORT: 5432
-        KEYCLOAK_DATABASE_NAME: keycloak
-        KEYCLOAK_DATABASE_USER: keycloak
-        KEYCLOAK_DATABASE_SCHEMA: public
-        KEYCLOAK_DATABASE_PASSWORD: password
-        KEYCLOAK_CREATE_ADMIN_USER: admin
-        KEYCLOAK_ADMIN_USER: admin
-        KEYCLOAK_ADMIN_PASSWORD: password
-        KEYCLOAK_LOGLEVEL: INFO
-        KC_HOSTNAME: host.docker.internal:8085
-        #KC_HOSTNAME_STRICT: 'true'
-        KC_HOSTNAME_STRICT_BACKCHANNEL: 'true'
-        #KC_HOSTNAME_PORT: 8085
-        #KC_HOSTNAME_ADMIN: localhost
-        KEYCLOAK_FRONTEND_URL: localhost:8085
-        PROXY_ADDRESS_FORWARDING: 'true'
-        # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-        #JDBC_PARAMS: "ssl=true"
-      ports:
-        - 8085:8080
-      volumes:
-        - ./themes/mock:/opt/bitnami/keycloak/themes/mock
-      depends_on:
-        - postgres
-      networks:
-        - postgres
-      restart: always
+    image: jboss/keycloak:latest
+    environment:
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+      #KEYCLOAK_HOSTNAME: host.docker.internal:8085/auth
+      #KC_HOSTNAME_STRICT_BACKCHANNEL: 'true'
+      # KEYCLOAK_FRONTEND_URL: localhost:8085
+      PROXY_ADDRESS_FORWARDING: 'true'
+    ports:
+      - 8085:8080
+    volumes:
+      - ./themes/registerhtml/register.ftl:/opt/jboss/keycloak/themes/base/login/register.ftl
+      - ./themes/registerhtml/login.css:/opt/jboss/keycloak/themes/keycloak/login/resources/css/login.css
+      - ./themes/registerhtml/smilebat.png:/opt/jboss/keycloak/themes/keycloak/login/resources/img/smilebat.png
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+    restart: always
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4:latest

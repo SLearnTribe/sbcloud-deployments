@@ -14,9 +14,9 @@ services:
           window: 60s
       networks:
         - sbdev22_postgres
-  cloud-gateway:
-      container_name: cloud-gateway
-      image: vgt-1
+  cloud-auth:
+      container_name: cloud-auth
+      image: cloud-auth-1
       ports:
         - 8080:8080
       deploy:
@@ -31,8 +31,13 @@ services:
         - sbdev22_postgres
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        KEYCLOAK_RESTURL: http://host.docker.internal:8085/realms
-        KEYCLOAK_BASEURL: http://host.docker.internal:8085/realms
+        FEIGN_CLIENT_URL_KEYCLOAK: http://host.docker.internal:8085/auth
+        KEYCLOAK_RESTURL: http://localhost:8085/auth/realms
+        KEYCLOAK_BASEURL: http://localhost:8085/auth/realms
+        KEYCLOAK_REALM_NAME: master
+        KEYCLOAK_REALM_CLIENTID: nginx
+        KEYCLOAK_REALM_CLIENTSECRET: JvdVr02zXQjN2xGaCYZ5RKab0KXNG6gJ
+        KEYCLOAK_REALM_REDIRECTURI: http://localhost:3000/smile-bat/dashboard
 networks:
   sbdev22_postgres:
     external: true
