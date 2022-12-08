@@ -16,7 +16,7 @@ services:
           window: 60s
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
+        FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
         SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
 networks:
   sbstag_postgres:

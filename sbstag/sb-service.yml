@@ -31,11 +31,11 @@ services:
         - sbstag_postgres
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
+        FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
         KEYCLOAK_RESTURL: http://www.smilebat.xyz/auth/realms
         KEYCLOAK_REALM_NAME: master
         KEYCLOAK_REALM_CLIENTID: nginx
-        KEYCLOAK_REALM_CLIENTSECRET: n1vuEroC9xdNCIucEtDzeeQP3DvniOHH
+        KEYCLOAK_REALM_CLIENTSECRET: bP9zTt7zArJBbIYwmFCE2AiyzFTD1Ppo
         KEYCLOAK_REALM_REDIRECTURI: http://localhost:3000/smile-bat/dashboard
 networks:
   sbstag_postgres:
