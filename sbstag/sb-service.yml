@@ -18,7 +18,7 @@ services:
       container_name: cloud-auth
       image: smilebat96/cloud-auth-service:latest
       ports:
-        - 8090:8090
+        - 8080:8080
       deploy:
         restart_policy:
           condition: on-failure
@@ -31,8 +31,9 @@ services:
         - sbstag_postgres
       environment:
         EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+        FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
         KEYCLOAK_RESTURL: http://www.smilebat.xyz/auth/realms
+        KEYCLOAK_BASEURL: http://www.smilebat.xyz/auth/realms
         KEYCLOAK_REALM_NAME: master
         KEYCLOAK_REALM_CLIENTID: nginx
         KEYCLOAK_REALM_CLIENTSECRET: bP9zTt7zArJBbIYwmFCE2AiyzFTD1Ppo
