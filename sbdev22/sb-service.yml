@@ -1,43 +1,43 @@
-version: '3'
+version: "3"
 
 services:
   eureka-discovery:
-      container_name: eureka-discovery
-      image: smilebat96/cloud-eureka-discovery:latest
-      ports:
-        - 8761:8761
-      deploy:
-        restart_policy:
-          condition: on-failure
-          delay: 10s
-          max_attempts: 5
-          window: 60s
-      networks:
-        - sbdev22_postgres
+    container_name: eureka-discovery
+    image: smilebat96/cloud-eureka-discovery:latest
+    ports:
+      - 8761:8761
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    networks:
+      - sbdev22_postgres
   cloud-auth:
-      container_name: cloud-auth
-      image: cloud-auth-1
-      ports:
-        - 8080:8080
-      deploy:
-        restart_policy:
-          condition: on-failure
-          delay: 10s
-          max_attempts: 5
-          window: 60s
-      depends_on:
-        - eureka-discovery
-      networks:
-        - sbdev22_postgres
-      environment:
-        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-        FEIGN_CLIENT_URL_KEYCLOAK: http://host.docker.internal:8085/auth
-        KEYCLOAK_RESTURL: http://localhost:8085/auth/realms
-        KEYCLOAK_BASEURL: http://localhost:8085/auth/realms
-        KEYCLOAK_REALM_NAME: master
-        KEYCLOAK_REALM_CLIENTID: nginx
-        KEYCLOAK_REALM_CLIENTSECRET: JvdVr02zXQjN2xGaCYZ5RKab0KXNG6gJ
-        KEYCLOAK_REALM_REDIRECTURI: http://localhost:3000/smile-bat/dashboard
+    container_name: cloud-auth
+    image: smilebat96/cloud-auth-service:latest
+    ports:
+      - 8080:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    depends_on:
+      - eureka-discovery
+    networks:
+      - sbdev22_postgres
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
+      FEIGN_CLIENT_URL_KEYCLOAK: http://host.docker.internal:8085/auth
+      KEYCLOAK_RESTURL: http://localhost:8085/auth/realms
+      KEYCLOAK_BASEURL: http://localhost:8085/auth/realms
+      KEYCLOAK_REALM_NAME: master
+      KEYCLOAK_REALM_CLIENTID: nginx
+      KEYCLOAK_REALM_CLIENTSECRET: JvdVr02zXQjN2xGaCYZ5RKab0KXNG6gJ
+      KEYCLOAK_REALM_REDIRECTURI: http://localhost:3000/smile-bat/dashboard
 networks:
   sbdev22_postgres:
     external: true

@@ -1,48 +1,48 @@
-version: '3'
+version: "3"
 
 volumes:
   postgres_data:
-      driver: local
+    driver: local
   pgadmin:
 
 services:
   postgres:
-      image: docker.io/bitnami/postgresql:latest
-      environment:
+    image: docker.io/bitnami/postgresql:latest
+    environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - POSTGRESQL_USERNAME=keycloak
       - POSTGRESQL_DATABASE=keycloak
       - POSTGRES_PASSWORD=password
-      volumes:
-        - 'postgres_data:/var/lib/postgresql/data'
-      ports:
-        - 5432:5432
-      networks:
-        - postgres
-      restart: always
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data"
+    ports:
+      - 5432:5432
+    networks:
+      - postgres
+    restart: always
   keycloak:
-      image: jboss/keycloak:latest
-      environment:
-        DB_VENDOR: postgres
-        DB_ADDR: postgres
-        DB_DATABASE: keycloak
-        DB_USER: keycloak
-        DB_SCHEMA: public
-        DB_PASSWORD: password
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: password
-        KEYCLOAK_HOSTNAME: www.smilebat.xyz
-      ports:
-        - 8085:8080
-      volumes:
-        - ./themes/registerhtml/register.ftl:/opt/jboss/keycloak/themes/base/login/register.ftl
-        - ./themes/registerhtml/login.css:/opt/jboss/keycloak/themes/keycloak/login/resources/css/login.css
-        - ./themes/registerhtml/smilebat.png:/opt/jboss/keycloak/themes/keycloak/login/resources/img/smilebat.png
-      depends_on:
-        - postgres
-      networks:
-        - postgres
-      restart: always
+    image: jboss/keycloak:latest
+    environment:
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+      KEYCLOAK_HOSTNAME: www.smilebat.xyz
+    ports:
+      - 8085:8080
+    volumes:
+      - ./themes/registerhtml/register.ftl:/opt/jboss/keycloak/themes/base/login/register.ftl
+      - ./themes/registerhtml/login.css:/opt/jboss/keycloak/themes/keycloak/login/resources/css/login.css
+      - ./themes/registerhtml/smilebat.png:/opt/jboss/keycloak/themes/keycloak/login/resources/img/smilebat.png
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+    restart: always
 networks:
   postgres:
     driver: bridge
