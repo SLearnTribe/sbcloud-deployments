@@ -58,6 +58,27 @@
 
             <div class="${properties.kcFormGroupClass!}">
                 <div class="${properties.kcLabelWrapperClass!}">
+                    <label for="phone" class="${properties.kcLabelClass!}">${msg("Phone")}</label>
+                </div>
+                <div class="${properties.kcInputWrapperClass!}">
+                    <input 
+                    type="text" id="user.attributes.phone" 
+                    class="${properties.kcInputClass!}" 
+                    name="user.attributes.phone"
+                    value="${(register.formData['user.attributes.phone']!'')}"
+                    aria-invalid="<#if messagesPerField.existsError('phone')>true</#if>"
+                    />
+
+                    <#if messagesPerField.existsError('phone')>
+                        <span id="input-error-phone" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
+                            ${kcSanitize(messagesPerField.get('phone'))?no_esc}
+                        </span>
+                    </#if>
+                </div>
+            </div>
+
+            <div class="${properties.kcFormGroupClass!}">
+                <div class="${properties.kcLabelWrapperClass!}">
                     <label for="email" class="${properties.kcLabelClass!}">${msg("email")}</label>
                 </div>
                 <div class="${properties.kcInputWrapperClass!}">
