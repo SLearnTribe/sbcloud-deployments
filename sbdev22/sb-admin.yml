@@ -2,7 +2,7 @@ version: "3"
 
 volumes:
   postgres_data:
-    driver: local
+#    driver: local
   pgadmin:
 
 services:
@@ -14,7 +14,7 @@ services:
       - POSTGRESQL_DATABASE=keycloak
       - POSTGRES_PASSWORD=password
     volumes:
-      - "postgres_data:/var/lib/postgresql/data"
+      - ./postgres_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     networks:
@@ -61,6 +61,58 @@ services:
     networks:
       - postgres
     restart: always
+    
+  pgbackups_1:
+    image: prodrigestivill/postgres-backup-local
+    restart: always
+    #user: postgres:postgres # Optional: see below
+    volumes:
+        - ./pgbackups:/backups
+    links:
+        - postgres
+    depends_on:
+        - postgres
+    networks:
+      - postgres
+    environment:
+        - POSTGRES_HOST=postgres
+        - POSTGRES_PORT=5432
+        - POSTGRES_DB=keycloak
+        - POSTGRES_USER=keycloak
+        - POSTGRES_PASSWORD=password
+     #  - POSTGRES_PASSWORD_FILE=/run/secrets/db_password <-- alternative for POSTGRES_PASSWORD (to use with docker secrets)
+        - POSTGRES_EXTRA_OPTS=-Z6 --schema=public --blobs
+        - SCHEDULE=@every 0h10m0s
+        - BACKUP_KEEP_DAYS=7
+        - BACKUP_KEEP_WEEKS=4
+        - BACKUP_KEEP_MONTHS=6
+        - HEALTHCHECK_PORT=8080
+        
+  pgbackups_2:
+    image: prodrigestivill/postgres-backup-local
+    restart: always
+    #user: postgres:postgres # Optional: see below
+    volumes:
+        - ./pgbackups:/backups
+    links:
+        - postgres
+    depends_on:
+        - postgres
+    networks:
+      - postgres
+    environment:
+        - POSTGRES_HOST=postgres
+        - POSTGRES_PORT=5432
+        - POSTGRES_DB=inquisitve
+        - POSTGRES_USER=keycloak
+        - POSTGRES_PASSWORD=password
+     #  - POSTGRES_PASSWORD_FILE=/run/secrets/db_password <-- alternative for POSTGRES_PASSWORD (to use with docker secrets)
+        - POSTGRES_EXTRA_OPTS=-Z6 --schema=public --blobs
+        - SCHEDULE=@every 0h1m0s
+        - BACKUP_KEEP_DAYS=7
+        - BACKUP_KEEP_WEEKS=4
+        - BACKUP_KEEP_MONTHS=6
+        - HEALTHCHECK_PORT=8080
 
 networks:
   postgres:
