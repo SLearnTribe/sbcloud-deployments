@@ -15,21 +15,7 @@ services:
     networks:
       - sbdev22_postgres
       
-  consul:
-    #command: -server -bootstrap -advertise=127.0.0.1
-    image: consul:latest
-    container_name: consul
-    ports:
-      - 8500:8500
-    networks:
-      - sbdev22_postgres
-      
 networks:
   sbdev22_postgres:
     external: true
-    
-volumes:
-  zookeeper_data:
-    driver: local
-  kafka_data:
-    driver: local
+

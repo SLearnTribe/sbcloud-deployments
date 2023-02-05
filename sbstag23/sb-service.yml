@@ -1,24 +1,20 @@
 version: "3"
 
 services:
-  eureka-discovery:
-    container_name: eureka-discovery
-    image: smilebat96/cloud-eureka-discovery:latest
+  consul:
+    #command: -server -bootstrap -advertise=127.0.0.1
+    image: consul:latest
+    container_name: consul
     ports:
-      - 8761:8761
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-        max_attempts: 5
-        window: 60s
+      - 8500:8500
     networks:
-      - sbstag_postgres
+      - sbstag23_postgres
+
   cloud-auth:
     container_name: cloud-auth
     image: smilebat96/cloud-auth-service:latest
     ports:
-      - 8090:8090
+      - 8090:8080
     deploy:
       restart_policy:
         condition: on-failure
@@ -26,11 +22,11 @@ services:
         max_attempts: 5
         window: 60s
     depends_on:
-      - eureka-discovery
+      - consul
     networks:
-      - sbstag_postgres
+      - sbstag23_postgres
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
+      #EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
       FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
       KEYCLOAK_RESTURL: http://www.smilebat.xyz/auth/realms
       KEYCLOAK_BASEURL: http://www.smilebat.xyz/auth/realms
@@ -38,6 +34,35 @@ services:
       KEYCLOAK_REALM_CLIENTID: nginx
       KEYCLOAK_REALM_CLIENTSECRET: bP9zTt7zArJBbIYwmFCE2AiyzFTD1Ppo
       KEYCLOAK_REALM_REDIRECTURI: http://localhost:3000/smile-bat/dashboard
+      SPRING_CLOUD_CONSUL_HOST: consul
+
+  zookeeper:
+     container_name: zookeeper
+     image: 'bitnami/zookeeper:latest'
+     ports:
+       - '2181:2181'
+     networks:
+       - sbstag23_postgres
+     environment:
+       - ALLOW_ANONYMOUS_LOGIN=yes
+      
+  kafka:
+    container_name: kafka
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9092:9092'
+      - '29092:29092'
+    networks:
+      - sbstag23_postgres
+    environment:
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:29092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,EXTERNAL://localhost:29092
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
+      - KAFKA_BROKER_ID=1
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+
 networks:
-  sbstag_postgres:
+  sbstag23_postgres:
     external: true

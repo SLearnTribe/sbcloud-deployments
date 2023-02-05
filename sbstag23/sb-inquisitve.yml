@@ -1,13 +1,13 @@
 version: "3"
 
 services:
-  learntribe-inquisitve:
-    container_name: learntribe-inquisitve
+  sb-inq:
+    container_name: sb-inq
     image: smilebat96/learntribe-inquisitve:latest
     ports:
-      - 8089:8089
+      - 8089:8080
     networks:
-      - sbstag_postgres
+      - sbstag23_postgres
     deploy:
       restart_policy:
         condition: on-failure
@@ -15,9 +15,77 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
+      #EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
       FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
+      SPRING_CLOUD_CONSUL_HOST: consul
+      KAFKA_STARTUP: true
+      KAFKA_SERVER_URL: kafka:29092
+      DOMAIN: www.smilebat.xyz
+
+  sb-ast:
+    container_name: sb-ast
+    image: smilebat96/learntribe-assessment-reactor:latest
+    ports:
+      - 8090:8080
+    networks:
+      - sbstag23_postgres
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    environment:
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
+      SPRING_CLOUD_CONSUL_HOST: consul
+      KAFKA_STARTUP: true
+      KAFKA_SERVER_URL: kafka:29092
+      DOMAIN: www.smilebat.xyz
+
+  sb-rsp:
+    container_name: sb-rsp
+    image: smilebat96/learntribe-resume-processor:latest
+    ports:
+      - 8091:8080
+    networks:
+      - sbstag23_postgres
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    environment:
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
+      SPRING_CLOUD_CONSUL_HOST: consul
+      KAFKA_STARTUP: true
+      KAFKA_SERVER_URL: kafka:29092
+      DOMAIN: www.smilebat.xyz
+
+  sb-oaip:
+    container_name: sb-oaip
+    image: smilebat96/openai-processor:latest
+    ports:
+      - 8092:8080
+    networks:
+      - sbstag23_postgres
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    environment:
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
+      SPRING_CLOUD_CONSUL_HOST: consul
+      KAFKA_STARTUP: true
+      KAFKA_SERVER_URL: kafka:29092
+      DOMAIN: www.smilebat.xyz
+
 networks:
-  sbstag_postgres:
+  sbstag23_postgres:
     external: true
