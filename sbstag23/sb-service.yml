@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  eureka-discovery:
+    container_name: eureka-discovery
+    image: smilebat96/cloud-eureka-discovery:latest
+    ports:
+      - 8761:8761
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    networks:
+      - sbstag_postgres
+  cloud-auth:
+    container_name: cloud-auth
+    image: smilebat96/cloud-auth-service:latest
+    ports:
+      - 8090:8090
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    depends_on:
+      - eureka-discovery
+    networks:
+      - sbstag_postgres
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      KEYCLOAK_RESTURL: http://www.smilebat.xyz/auth/realms
+      KEYCLOAK_BASEURL: http://www.smilebat.xyz/auth/realms
+      KEYCLOAK_REALM_NAME: master
+      KEYCLOAK_REALM_CLIENTID: nginx
+      KEYCLOAK_REALM_CLIENTSECRET: bP9zTt7zArJBbIYwmFCE2AiyzFTD1Ppo
+      KEYCLOAK_REALM_REDIRECTURI: http://localhost:3000/smile-bat/dashboard
+networks:
+  sbstag_postgres:
+    external: true
