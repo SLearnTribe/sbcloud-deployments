@@ -3,16 +3,22 @@ version: "3"
 services:
   nginx:
     container_name: nginx
-    image: smilebat96/nginx:latest
-    restart: unless-stopped
+    image: nginx-final-4
+    volumes:
+      - ./nginxcon/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
       - 443:443
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     networks:
       - sbstag23_postgres
-
+  consul:
+    #command: -server -bootstrap -advertise=127.0.0.1
+    image: consul:latest
+    container_name: consul
+    ports:
+      - 8500:8500
+    networks:
+      - sbstag23_postgres
 networks:
   sbstag23_postgres:
     external: true

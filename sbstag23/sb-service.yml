@@ -2,7 +2,7 @@ version: "3"
 
 services:
   consul:
-    #command: -server -bootstrap -advertise=127.0.0.1
+#    command: -server -bootstrap -advertise=127.0.0.1
     image: consul:latest
     container_name: consul
     ports:
@@ -10,11 +10,11 @@ services:
     networks:
       - sbstag23_postgres
 
-  cloud-auth:
-    container_name: cloud-auth
+  sb-auth:
+    container_name: sb-auth
     image: smilebat96/cloud-auth-service:latest
     ports:
-      - 8090:8080
+      - 8080:8080
     deploy:
       restart_policy:
         condition: on-failure
