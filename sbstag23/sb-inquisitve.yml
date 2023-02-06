@@ -19,7 +19,7 @@ services:
       FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
-      KAFKA_STARTUP: true
+      KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:29092
       DOMAIN: www.smilebat.xyz
 
@@ -27,7 +27,7 @@ services:
     container_name: sb-ast
     image: smilebat96/learntribe-assessment-reactor:latest
     ports:
-      - 8090:8080
+      - 8093:8080
     networks:
       - sbstag23_postgres
     deploy:
@@ -40,7 +40,7 @@ services:
       FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
-      KAFKA_STARTUP: true
+      KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:29092
       DOMAIN: www.smilebat.xyz
 
@@ -61,7 +61,7 @@ services:
       FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
-      KAFKA_STARTUP: true
+      KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:29092
       DOMAIN: www.smilebat.xyz
 
@@ -82,7 +82,7 @@ services:
       FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
-      KAFKA_STARTUP: true
+      KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:29092
       DOMAIN: www.smilebat.xyz
 
