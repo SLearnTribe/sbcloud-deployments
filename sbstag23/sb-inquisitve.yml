@@ -16,11 +16,11 @@ services:
         window: 60s
     environment:
       #EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
-      KAFKA_SERVER_URL: kafka:29092
+      KAFKA_SERVER_URL: kafka:9092
       DOMAIN: www.smilebat.xyz
 
   sb-ast:
@@ -37,11 +37,11 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
-      KAFKA_SERVER_URL: kafka:29092
+      KAFKA_SERVER_URL: kafka:9092
       DOMAIN: www.smilebat.xyz
 
   sb-rsp:
@@ -58,11 +58,11 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
-      KAFKA_SERVER_URL: kafka:29092
+      KAFKA_SERVER_URL: kafka:9092
       DOMAIN: www.smilebat.xyz
 
   sb-oaip:
@@ -79,12 +79,14 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
-      KAFKA_SERVER_URL: kafka:29092
+      KAFKA_SERVER_URL: kafka:9092
       DOMAIN: www.smilebat.xyz
+      FEATURE_OPENAI: 'true'
+      FEATURE_MAXQUESTIONS: 40
 
 networks:
   sbstag23_postgres:

@@ -27,7 +27,7 @@ services:
       - sbstag23_postgres
     environment:
       #EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz:8085/auth
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       KEYCLOAK_RESTURL: http://www.smilebat.xyz/auth/realms
       KEYCLOAK_BASEURL: http://www.smilebat.xyz/auth/realms
       KEYCLOAK_REALM_NAME: master
@@ -55,9 +55,10 @@ services:
     networks:
       - sbstag23_postgres
     environment:
+      - KAFKA_ADVERTISED_HOST_NAME=38.242.132.44
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       - KAFKA_CFG_LISTENERS=INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:29092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,EXTERNAL://localhost:29092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,EXTERNAL://38.242.132.44:29092
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
       - KAFKA_BROKER_ID=1
       - ALLOW_PLAINTEXT_LISTENER=yes
