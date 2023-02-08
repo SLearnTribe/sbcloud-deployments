@@ -60,12 +60,12 @@ services:
     environment:
         - POSTGRES_HOST=postgres
         - POSTGRES_PORT=5432
-        - POSTGRES_DB=inquisitve
+        - POSTGRES_DB=keycloak
         - POSTGRES_USER=keycloak
         - POSTGRES_PASSWORD=password
      #  - POSTGRES_PASSWORD_FILE=/run/secrets/db_password <-- alternative for POSTGRES_PASSWORD (to use with docker secrets)
         - POSTGRES_EXTRA_OPTS=-Z6 --schema=public --blobs
-        - SCHEDULE=@every 12h0m0s
+        - SCHEDULE=@every 0h5m0s
         - BACKUP_KEEP_DAYS=7
         - BACKUP_KEEP_WEEKS=2
         - BACKUP_KEEP_MONTHS=1
