@@ -63,19 +63,19 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       
-  # kafdrop:
-  #   container_name: kafdrop
-  #   image: obsidiandynamics/kafdrop
-  #   restart: "no"
-  #   networks:
-  #     - sbdev22_postgres
-  #   ports:
-  #     - "9000:9000"
-  #   environment:
-  #     KAFKA_BROKERCONNECT: kafka:9092
-  #     JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
-  #   depends_on:
-  #     - "kafka"
+#   kafdrop:
+#      container_name: kafdrop
+#      image: obsidiandynamics/kafdrop
+#      restart: "no"
+# #     networks:
+# #       - sbdev22_postgres
+#      ports:
+#        - "9000:9000"
+#      environment:
+#        KAFKA_BROKERCONNECT: www.smilebat.xyz:29092
+#        JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+# #     depends_on:
+# #       - "kafka"
       
 networks:
   sbdev22_postgres:
