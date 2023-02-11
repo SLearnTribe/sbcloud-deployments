@@ -88,6 +88,27 @@ services:
       FEATURE_OPENAI: 'true'
       FEATURE_MAXQUESTIONS: 40
 
+  sb-ana:
+    container_name: sb-ana
+    image: smilebat96/sb-analytics:latest
+    ports:
+      - 8153:8080
+    networks:
+      - sbstag23_postgres
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 60s
+    environment:
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
+      SPRING_CLOUD_CONSUL_HOST: consul
+      KAFKA_STARTUP: 'true'
+      KAFKA_SERVER_URL: kafka:9092
+      DOMAIN: www.smilebat.xyz
+
 networks:
   sbstag23_postgres:
     external: true
