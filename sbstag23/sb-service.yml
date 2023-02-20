@@ -34,6 +34,7 @@ services:
       KEYCLOAK_REALM_CLIENTID: nginx
       KEYCLOAK_REALM_CLIENTSECRET: bP9zTt7zArJBbIYwmFCE2AiyzFTD1Ppo
       KEYCLOAK_REALM_REDIRECTURI: http://localhost:3000/smile-bat/dashboard
+      KEYCLOAK_REALM_REDIRECTURISERVER: http://www.smilebat.xyz:3000/smile-bat/dashboard
       SPRING_CLOUD_CONSUL_HOST: consul
 
   zookeeper:

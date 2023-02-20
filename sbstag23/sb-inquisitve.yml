@@ -109,6 +109,16 @@ services:
       KAFKA_SERVER_URL: kafka:9092
       DOMAIN: www.smilebat.xyz
 
+  sb-ui:
+    container_name: sb-ui
+    image: smilebat96/learntribe-ui-lt:latest
+    build:
+      context: .
+    ports:
+      - 3000:80
+    networks:
+      - sbdev22_postgres
+      
 networks:
   sbstag23_postgres:
     external: true
