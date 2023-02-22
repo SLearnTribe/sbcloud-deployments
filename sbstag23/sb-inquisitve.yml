@@ -112,12 +112,12 @@ services:
   sb-ui:
     container_name: sb-ui
     image: smilebat96/learntribe-ui-lt:latest
-    build:
-      context: .
+#    build:
+#      context: .
     ports:
       - 3000:80
     networks:
-      - sbdev22_postgres
+      - sbstag23_postgres
       
 networks:
   sbstag23_postgres:
