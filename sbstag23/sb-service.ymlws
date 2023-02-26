@@ -27,9 +27,9 @@ services:
       - sbstag23_postgres
     environment:
       #EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
-      KEYCLOAK_ISSUERURI: http://www.smilebat.xyz/realms/master
-      KEYCLOAK_ADMINURI: http://www.smilebat.xyz/realms/master
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
+      KEYCLOAK_ISSUERURI: http://www.smilebat.xyz/auth/realms/master
+      #KEYCLOAK_ADMINURI: http://www.smilebat.xyz/auth/realms/master
       KEYCLOAK_REALM_NAME: master
       KEYCLOAK_REALM_CLIENTID: nginx
       KEYCLOAK_REALM_CLIENTSECRET: bP9zTt7zArJBbIYwmFCE2AiyzFTD1Ppo

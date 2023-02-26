@@ -16,12 +16,11 @@ services:
         window: 60s
     environment:
       #EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:9092
-      #DOMAIN: www.smilebat.xyz
+      DOMAIN: www.smilebat.xyz
 
   sb-ast:
     container_name: sb-ast
@@ -37,12 +36,12 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:9092
-      #DOMAIN: www.smilebat.xyz
+      DOMAIN: www.smilebat.xyz
 
   sb-rsp:
     container_name: sb-rsp
@@ -58,12 +57,12 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:9092
-      #DOMAIN: www.smilebat.xyz
+      DOMAIN: www.smilebat.xyz
 
   sb-oaip:
     container_name: sb-oaip
@@ -79,12 +78,12 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:9092
-      #DOMAIN: www.smilebat.xyz
+      DOMAIN: www.smilebat.xyz
       FEATURE_OPENAI: 'true'
       FEATURE_MAXQUESTIONS: 40
 
@@ -107,7 +106,7 @@ services:
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
       KAFKA_SERVER_URL: kafka:9092
-      #DOMAIN: www.smilebat.xyz
+      DOMAIN: www.smilebat.xyz
 
   sb-ui:
     container_name: sb-ui
