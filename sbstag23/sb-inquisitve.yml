@@ -16,7 +16,7 @@ services:
         window: 60s
     environment:
       #EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-discovery:8761/eureka
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
@@ -37,7 +37,7 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
@@ -58,7 +58,7 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
@@ -79,7 +79,7 @@ services:
         max_attempts: 5
         window: 60s
     environment:
-      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz
+      FEIGN_CLIENT_URL_KEYCLOAK: http://www.smilebat.xyz/auth
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/inquisitve
       SPRING_CLOUD_CONSUL_HOST: consul
       KAFKA_STARTUP: 'true'
