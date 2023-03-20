@@ -3,9 +3,13 @@ version: "3"
 services:
   nginx:
     container_name: nginx
-    image: nginx-git
+    image: nginx-n
     volumes:
       - ./nginxcon/nginx.conf:/etc/nginx/nginx.conf
+      #- /root/rj/www.smilebat.xyz.crt:/etc/nginx/www.smilebat.xyz.crt
+      - /etc/ssl/certs/smilebat.xyz.pem:/etc/nginx/smilebat.xyz.pem
+      - /etc/ssl/private/smilebat.xyz.key:/etc/nginx/smilebat.xyz.key
+#      - ./build:/var/www/build
     ports:
       - 80:80
       - 443:443

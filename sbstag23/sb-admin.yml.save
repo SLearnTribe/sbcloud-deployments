@@ -24,32 +24,19 @@ services:
 
   keycloak:
     container_name: keycloak
-    image: keycloak-dev
-    #command: ['start --optimized --https-certificate-file=/smilebat.xyz.crt --https-certificate-key-file=/smilebat.xyz.key --https-port=8443']
+    image: quay.io/keycloak/keycloak:19.0.1
+    command: ['start --optimized --db=postgres --https-certificate-file=/smilebat.xyz.crt --https-certificate-key-file=/smilebat.xyz.key --https-port=8443']
     environment:
-#      KC_DB: postgres
-#      KC_DB_USERNAME: keycloak
-#      KC_DB_PASSWORD: password
-#      KC_DB_URL: jdbc:postgresql://postgres/keycloak
+      KC_DB: postgres
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
+      KC_DB_URL: jdbc:postgresql://postgres/keycloak
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: password
       KC_HOSTNAME: www.smilebat.xyz
-#      KC_FEATURES: token-exchange
-#      KC_DB_URL_HOST: postgres
-#      KC_DB_URL_PORT: 5432
-#      KC_TRANSACTION_XA_ENABLED: 'true'
-      KC_HTTPS_CERTIFICATE_FILE: /opt/keycloak/conf/server.crt.pem
-      KC_HTTPS_CERTIFICATE_KEY_FILE: /opt/keycloak/conf/server.key.pem
-      KC_HTTP_ENABLED: 'true'
-#      KC_HOSTNAME_STRICT_BACKCHANNEL: 'true'
-#      KC_PROXY: passthrough
-#      KC_HOSTNAME_PATH: /auth
     ports:
       - 8085:8080
-      - 8443:8443
-    volumes:
-      - ./smilebat.xyz.pem:/opt/keycloak/conf/server.crt.pem
-      - ./smilebat.xyz.key:/opt/keycloak/conf/server.key.pem
+#    volumes:
 #        - ./themes/registerhtml/register.ftl:/opt/keycloak/themes/base/login/register.ftl
 #        - ./themes/registerhtml/login.css:/opt/keycloak/themes/keycloak/login/resources/css/login.css
 #        - ./themes/registerhtml/smilebat.png:/opt/keycloak/themes/keycloak/login/resources/img/smilebat.png
